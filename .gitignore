@@ -29,3 +29,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+$ echo debug.log >> .gitignore
+$ git rm --cached debug.log
+rm 'application.properties'
+$ git commit -m "Start ignoring application.properties"
