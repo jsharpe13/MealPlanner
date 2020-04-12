@@ -1,21 +1,24 @@
 package dmacc.beans;
 
+import java.util.List;
+
 public class Recipes {
 	private long id;
 	private String name;
 	private String category;
-	
+	private List<Ingredients> ingredientsList;
 	
 	public Recipes() {
 		super();
 	}
 	
 
-	public Recipes(long id, String name, String category) {
+	public Recipes(long id, String name, String category, List<Ingredients> ingredientsList) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.category = category;
+		this.ingredientsList = ingredientsList;
 	}
 
 
@@ -54,6 +57,16 @@ public class Recipes {
 	 */
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+
+	public List<Ingredients> getIngredientsList() {
+		return ingredientsList;
+	}
+
+
+	public void setIngredientsList(List<Ingredients> ingredientsList) {
+		this.ingredientsList = ingredientsList;
 	}
 	
 	
