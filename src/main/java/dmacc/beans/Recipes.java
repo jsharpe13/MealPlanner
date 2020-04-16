@@ -68,6 +68,13 @@ public class Recipes {
 	public void setIngredientsList(List<Ingredients> ingredientsList) {
 		this.ingredientsList = ingredientsList;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Recipes [id=" + id + ", name=" + name + ", category=" + category + ", ingredientsList="
+				+ ingredientsList + "]";
+	}
 	
 	
 }
