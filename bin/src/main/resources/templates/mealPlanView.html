@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Meal Plan Viewer</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentIngrediants : $(ingrediants)">
+ <td th:text="${currentIngrediants.id}"/>
+	 <td th:text="${currentIngrediants.name}"/>
+	 <td th:text="${currentIngrediants.category}"/>
+</tr>
+</table>
+</form>
+<a href="">Return to Menu</a>
+</body>
+</html>
