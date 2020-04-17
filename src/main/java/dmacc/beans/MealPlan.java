@@ -48,8 +48,9 @@ public class MealPlan {
 	}
 	@Override
 	public String toString() {
-		return "MealPlan [id=" + id + "]";
+		return "MealPlan [id=" + id + ", recipesList=" + recipesList + "]";
 	}
+	
 
 	
 	

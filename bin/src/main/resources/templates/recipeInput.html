@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Meal Plan Viewer</title>
+</head>
+<body>
+<form th:object="${newRecipe}" th:action="@{/updateRecipe/{id}(id=${newRecipe.id})}" method=POST>
+
+Name:<input name="name"size="20" th:field="*{name}"> <br />
+Category:<input name="category"size="20" th:field="*{category}"> <br />
+
+<a href="">Return to Menu</a>
+</body>
+</html>
