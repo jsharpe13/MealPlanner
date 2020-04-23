@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -8,11 +7,12 @@
 <body>
 <form>
 <table>
-<tr th:each="currentRecipes : $(recipes)">
+<tr th:each="currentRecipes : ${recipes}">
  <td th:text="${currentRecipes.id}"/>
 	 <td th:text="${currentRecipes.name}"/>
 	 <td th:text="${currentRecipes.category}"/>
-	 <c:forEach th:text="${currentRecipes.ingrediantsList}"/>
+	 <c:forEach th:text="${currentRecipes.ingredientsList}"/>
+	 
 </tr>
 </table>
 </form>

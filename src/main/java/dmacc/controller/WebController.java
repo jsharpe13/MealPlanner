@@ -14,9 +14,12 @@ public class WebController {
 	
 	@GetMapping("viewAllMeals")
 	public String viewAllMealPlan(Model model) {
-		model.addAttribute("ingrediants", repo.findAll());
+		model.addAttribute("ingredients", repo.findAll());
 		return "mealPlanView";
+		
+		
 	}
+	
 	@GetMapping("viewAllRecipes")
 	public String viewAllRecipes(Model model) {
 		model.addAttribute("recipes", repo.findAll());
