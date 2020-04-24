@@ -9,13 +9,14 @@
 <table>
 <tr th:each="currentRecipes : ${recipes}">
  <td th:text="${currentRecipes.id}"/>
-	 <td th:text="${currentRecipes.name}"/>
-	 <td th:text="${currentRecipes.category}"/>
-	 <c:forEach th:text="${currentRecipes.ingredientsList}"/>
+	<td th:text="${currentRecipes.name}"/>
+	<td th:text="${currentRecipes.category}"/>
+	<td><a th:href="@{/edit/{id}(id=${currentRecipes.id})}">Edit</a></td>
+	<td><a th:href="@{/delete/{id}(id=${currentRecipes.id})}">Delete</a></td>
 	 
 </tr>
 </table>
 </form>
-<a href="">Return to Menu</a>
+<a href="/">Return to Menu</a>
 </body>
 </html>
