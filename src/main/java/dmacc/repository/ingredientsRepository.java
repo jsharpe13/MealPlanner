@@ -3,10 +3,10 @@ package dmacc.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import dmacc.beans.MealPlan;
+import dmacc.beans.Ingredients;
 
 @Repository
-public interface MealPlanRepository extends JpaRepository<MealPlan,Long>
+public interface ingredientsRepository extends JpaRepository<Ingredients,Long>
 {
 
 }
