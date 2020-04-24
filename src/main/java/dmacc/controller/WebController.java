@@ -7,17 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import dmacc.beans.Recipes;
 import dmacc.beans.Ingredients;
 import dmacc.repository.RecipeRepository;
 import dmacc.repository.ingredientsRepository;
+
 
 @Controller
 public class WebController {
 	@Autowired
 	RecipeRepository repo;
 	ingredientsRepository ingredientsRepo;
+
 
 	
 	@GetMapping("/toMenu")
@@ -26,6 +27,7 @@ public class WebController {
 		return "index";
 	}
 	@GetMapping("viewAllMeals")
+
 	public String viewAllMealPlan(Model model) 
 	{
 		model.addAttribute("ingredients", repo.findAll());
@@ -68,8 +70,7 @@ public class WebController {
 	    repo.delete(r);
 	    return viewAllRecipes(model);
 	}
-	
-	
+
 	//--------Ingredients Navigation-----------
 	
 	@GetMapping("viewAllIngredients")
@@ -117,6 +118,7 @@ public class WebController {
 		ingredientsRepo.delete(i);
 		return viewAllIngredients(model);
 	}
+
 
 
 }

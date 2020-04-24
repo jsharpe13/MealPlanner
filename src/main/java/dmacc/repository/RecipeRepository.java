@@ -1,3 +1,4 @@
+
 package dmacc.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,3 +10,4 @@ import dmacc.beans.Recipes;
 public interface RecipeRepository extends JpaRepository<Recipes,Long> {
 
 }
+
