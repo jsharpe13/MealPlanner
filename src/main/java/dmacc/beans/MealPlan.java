@@ -15,7 +15,7 @@ public class MealPlan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@OneToMany(targetEntity = Recipes.class, mappedBy = "mealPlan", 
+	@OneToMany(targetEntity = Recipes.class, mappedBy = "MealPlan", 
 		    cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Recipes> recipesList;
 	
