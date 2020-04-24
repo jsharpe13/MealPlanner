@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Contacts</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentIngredients : ${ingredients}">
+ <td th:text="${currentIngredients.id}"/>
+     <td th:text="${currentIngredients.name}"/>
+     <td th:text="${currentIngredients.category}"/>
+     <td><a th:href="@{/editIngredients/{id}(id=${currentIngredients.id})}">Edit</a></td>
+	 <td><a th:href="@{/deleteIngredients/{id}(id=${currentIngredients.id})}">Delete</a></td>
+</tr>
+</table>
+</form>
+<a href="inputIngredient">Add a new Ingredients</a>
+</body>
+</html>

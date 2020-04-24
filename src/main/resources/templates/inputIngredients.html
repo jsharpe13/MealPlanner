@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Ingredients</title>
+</head>
+<body>
+<form th:object="${newIngredients}" th:action="@{/update/{id}(id=${newIngredients.id})}" method=POST>
+
+Name: <input name="name"size="20" th:field="*{name}"> <br />
+Category: <input name="category"size="10" th:field="*{category}"><br />
+
+<input name="submit"type="submit"value="submit"/>
+</form>
+<a href="viewAllIngredients">View all Ingredients</a>
+</body>
+</html>
