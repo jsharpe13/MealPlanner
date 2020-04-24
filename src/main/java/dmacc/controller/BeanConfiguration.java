@@ -12,7 +12,7 @@ import dmacc.beans.Recipes;
 public class BeanConfiguration {
 	
 	@Bean
-	public MealPlan MealPlan() {
+	public MealPlan mealPlan() {
 		MealPlan bean = new MealPlan();
 		return bean;
 	}
