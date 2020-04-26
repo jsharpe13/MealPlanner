@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import dmacc.beans.Recipes;
 import dmacc.beans.Ingredients;
+import dmacc.repository.MealPlanRepository;
 import dmacc.repository.RecipeRepository;
 import dmacc.repository.ingredientsRepository;
 
@@ -16,8 +16,11 @@ import dmacc.repository.ingredientsRepository;
 @Controller
 public class WebController {
 	@Autowired
-	RecipeRepository repo;
+	RecipeRepository recipeRepo;
+	@Autowired
 	ingredientsRepository ingredientsRepo;
+	@Autowired
+	MealPlanRepository mealPlanRepo;
 
 
 	
@@ -30,15 +33,21 @@ public class WebController {
 
 	public String viewAllMealPlan(Model model) 
 	{
-		model.addAttribute("ingredients", repo.findAll());
+		model.addAttribute("ingredients", mealPlanRepo.findAll());
 		return "mealPlanView";
-		
-		
 	}
+	
+	
+	
+	//--------Recipe Navigation-----------
 	
 	@GetMapping("viewAllRecipes")
 	public String viewAllRecipes(Model model) {
-		model.addAttribute("recipes", repo.findAll());
+		if(recipeRepo.findAll().isEmpty()) 
+		{
+			return addNewRecipe(model);
+		}
+		model.addAttribute("recipes", recipeRepo.findAll());
 		return "recipeView";
 	}
 	
@@ -49,66 +58,58 @@ public class WebController {
 		return "recipeInput";
 	}
 	
-
 	@GetMapping("/edit/{id}")
 	public String showUpdateRecipe(@PathVariable("id") long id, Model model) {
-		Recipes r = repo.findById(id).orElse(null);
+		Recipes r = recipeRepo.findById(id).orElse(null);
 		System.out.println("RECIPE TO EDIT: " + r.toString());
 		model.addAttribute("newRecipe", r);
-		return "input";
+		return "recipeInput";
 	}
 	
 	@PostMapping("/update/{id}")
 	public String reviseRecipe(Recipes r, Model model) {
-		repo.save(r);
+		recipeRepo.save(r);
 		return viewAllRecipes(model);
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String deleteUser(@PathVariable("id") long id, Model model) {
-		Recipes r = repo.findById(id).orElse(null);
-	    repo.delete(r);
+		Recipes r = recipeRepo.findById(id).orElse(null);
+	    recipeRepo.delete(r);
 	    return viewAllRecipes(model);
 	}
 
 	//--------Ingredients Navigation-----------
-	
 	@GetMapping("viewAllIngredients")
-	public String viewAllIngredients(Model model) 
-	{
+	public String viewAllIngredients(Model model) {
 		if(ingredientsRepo.findAll().isEmpty()) 
 		{
-			return addNewIngredients(model);
+			return addNewIngredient(model);
 		}
 		model.addAttribute("ingredients", ingredientsRepo.findAll());
-		return "IngredientsView";
+		return "ingredientsView";
 	}
+	
 	@GetMapping("/inputIngredient")
-	public String addNewIngredients(Model model) 
+	public String addNewIngredient(Model model) 
 	{
 		Ingredients i = new Ingredients();
-		model.addAttribute("newIngredients", i);
-		return"inputIngredients";
+		model.addAttribute("newIngredient", i);
+		return"ingredientInput";
 	}
-	@PostMapping("/inputIngredient")
-	public String addNewIngredients(@ModelAttribute Ingredients i, Model model) 
-	{
+	
+	@PostMapping("/updateIngredient/{id}")
+	public String reviseIngredient(Ingredients i, Model model) {
 		ingredientsRepo.save(i);
 		return viewAllIngredients(model);
 	}
+	
 	@GetMapping("/editIngredients/{id}")
 	public String showUpdateIngredients(@PathVariable("id") long id, Model model) 
 	{
 		Ingredients i = ingredientsRepo.findById(id).orElse(null);
 		model.addAttribute("newIngredients", i);
-		return "inputIngredients";
-	}
-	
-	@PostMapping("/updateIngredients/{id}")
-	public String reviseIngredients(Ingredients i, Model model) 
-	{
-		ingredientsRepo.save(i);
-		return viewAllIngredients(model);
+		return "ingredientInput";
 	}
 	
 	@GetMapping("/deleteIngredients/{id}")
@@ -116,7 +117,7 @@ public class WebController {
 	{
 		Ingredients i = ingredientsRepo.findById(id).orElse(null);
 		ingredientsRepo.delete(i);
-		return viewAllIngredients(model);
+		return "ingredientsView";
 	}
 
 
