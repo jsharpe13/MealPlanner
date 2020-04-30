@@ -2,11 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>View All Ingredients</title>
 </head>
 <body>
-<form>
-<table>
+<div class="container">
+<form> 
+<div class="table-responsive">
+<table class="table table-hover"> 
 <tr th:each="currentIngredients : ${ingredients}">
 	<td th:text="${currentIngredients.id}"/></td>
     <td th:text="${currentIngredients.name}"/></td>
@@ -15,8 +23,10 @@
 	<td><a th:href="@{/deleteIngredients/{id}(id=${currentIngredients.id})}">Delete</a></td>
 </tr>
 </table>
+</div>
 </form>
-<a href="inputIngredient">Add a new Ingredients</a><br>
-<a href="/">Return to Menu</a>
+<a class="btn btn-info" href="inputIngredient">Add a new Ingredients</a>
+<a class="btn btn-info" href="/">Return to Menu</a>
+</div>
 </body>
 </html>

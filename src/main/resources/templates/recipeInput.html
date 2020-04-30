@@ -2,17 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Add A Recipe</title>
 </head>
 <body>
-<form th:object="${newRecipe}" th:action="@{/update/{id}(id=${newRecipe.id})}" method=POST>
+<div class="container col-sm-offset-3">
+<form class="form-horizontal" th:object="${newRecipe}" th:action="@{/update/{id}(id=${newRecipe.id})}" method=POST>
+<div class="form-group">
+    <label class="control-label col-sm-1" for="name">Name:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="name" placeholder="Enter name" th:field="*{name}"><br>
+    </div>
+  </div>
 
-Name:<input name="name"size="20" th:field="*{name}"> <br />
-Category:<input name="category"size="20" th:field="*{category}"> <br />
+<div class="form-group">
+    <label class="control-label col-sm-1" for="category">Category:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="category" placeholder="Enter category" th:field="*{category}"><br>
+    </div>
+  </div>
 
-<input name="Submit" type="submit" value="submit" />
+<div class="form-group">
+    <div class="col-sm-offset-1 col-sm-6">
+      <input class="btn btn-default" name="Submit" type="submit" value="Submit" /><br><br>
+    </div>
+  </div>
+ <div class="form-group">
+<div class="col-sm-offset-1 col-sm-6">
+<a class="btn btn-info" href="../viewAllRecipes">View Recipes</a>
+<a class="btn btn-info" href="/">Return to Menu</a>
+</div>
+</div>
 </form>
-
-<a href="/">Return to Menu</a>
+</div>
 </body>
 </html>

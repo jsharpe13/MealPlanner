@@ -2,13 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	.btn-info:hover, .btn-primary:hover{
+		color: black;
+	}
+</style>
 <title>Meal Plan Viewer</title>
 </head>
 <body>
+<div class="container">
 <form>
-<table>
+<div class="table-responsive">
+<table class="table table-hover">
 <tr>
-	<td colspan="2"><strong>Recipes</strong></td>
+	<td colspan="3"><strong>Recipes</strong></td>
 </tr>
 <tr>
 	<td>ID</td>
@@ -21,10 +34,7 @@
 	<td th:text="${currentRecipes.category}"/>
 </tr>
 <tr>
-	<td colspan="2">&nbsp;</td>
-</tr>
-<tr>
-	<td colspan="2"><strong>Ingredients</strong></td>
+	<td colspan="3"><strong>Ingredients</strong></td>
 </tr>
 <tr>
 	<td>ID</td>
@@ -37,8 +47,9 @@
     <td th:text="${currentIngredients.category}"/>
 </tr>
 </table>
+</div>
 </form>
-<br>
-<a href="/">Return to Menu</a>
+<a class="btn btn-info" href="/">Return to Menu</a>
+</div>
 </body>
 </html>
