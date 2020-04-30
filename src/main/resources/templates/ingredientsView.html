@@ -8,24 +8,24 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>View All Recipes</title>
+<title>View All Ingredients</title>
 </head>
 <body>
 <div class="container">
 <form> 
 <div class="table-responsive">
-<table class="table table-hover">
-<tr th:each="currentRecipes : ${recipes}">
-	<td th:text="${currentRecipes.id}"/>
-	<td th:text="${currentRecipes.name}"/>
-	<td th:text="${currentRecipes.category}"/>
-	<td><a class="btn btn-warning" th:href="@{/edit/{id}(id=${currentRecipes.id})}">Edit</a></td>
-	<td><a class="btn btn-warning" th:href="@{/delete/{id}(id=${currentRecipes.id})}">Delete</a></td>
+<table class="table table-hover"> 
+<tr th:each="currentIngredients : ${ingredients}">
+	<td th:text="${currentIngredients.id}"/></td>
+    <td th:text="${currentIngredients.name}"/></td>
+    <td th:text="${currentIngredients.category}"/></td>
+    <td><a th:href="@{/editIngredients/{id}(id=${currentIngredients.id})}">Edit</a></td>
+	<td><a th:href="@{/deleteIngredients/{id}(id=${currentIngredients.id})}">Delete</a></td>
 </tr>
 </table>
 </div>
 </form>
-<a class="btn btn-info" href="../inputRecipe">Add New Recipe</a>
+<a class="btn btn-info" href="inputIngredient">Add a new Ingredients</a>
 <a class="btn btn-info" href="/">Return to Menu</a>
 </div>
 </body>

@@ -3,6 +3,7 @@ package dmacc.controller;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import dmacc.beans.Ingredients;
 import dmacc.beans.MealPlan;
 import dmacc.beans.Recipes;
 
@@ -23,4 +24,9 @@ public class BeanConfiguration {
 		return bean;
 	}
 
+	@Bean
+	public Ingredients ingredient() {
+		Ingredients bean = new Ingredients();
+		return bean;
+	}
 }

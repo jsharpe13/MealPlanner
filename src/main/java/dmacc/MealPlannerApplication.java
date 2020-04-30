@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import dmacc.beans.Ingredients;
 import dmacc.beans.MealPlan;
 import dmacc.beans.Recipes;
 import dmacc.controller.BeanConfiguration;
@@ -24,6 +25,10 @@ public class MealPlannerApplication {
 		MealPlan m = appContext.getBean("mealPlan", MealPlan.class);
 		
 		System.out.println(m.toString());
+		
+		Ingredients i = appContext.getBean("Ingredients", Ingredients.class);
+		
+		System.out.println(i.toString());
 	}
 
 }
