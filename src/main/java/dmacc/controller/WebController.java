@@ -33,7 +33,8 @@ public class WebController {
 
 	public String viewAllMealPlan(Model model) 
 	{
-		model.addAttribute("ingredients", mealPlanRepo.findAll());
+		model.addAttribute("recipes", recipeRepo.findAll());
+		model.addAttribute("ingredients", ingredientsRepo.findAll());
 		return "mealPlanView";
 	}
 	
